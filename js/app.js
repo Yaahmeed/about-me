@@ -19,6 +19,7 @@ function questionOne() {
   }
 }
 
+questionOne();
 
 // question 2
 function questionTwo() {
@@ -31,6 +32,8 @@ function questionTwo() {
   }
 }
 
+questionTwo();
+
 // question 3
 function questionThree() {
   let questionThreeGuess = prompt('Do I have 2 cat?').toLowerCase();
@@ -42,6 +45,7 @@ function questionThree() {
   }
 }
 
+questionThree();
 
 // question 4
 function questionFour() {
@@ -54,59 +58,63 @@ function questionFour() {
   }
 }
 
+questionFour();
+
 // question 5
 function questionFive() {
   let questionFiveGuess = prompt('Do I like Pizza?').toLowerCase();
 
   if (questionFiveGuess === 'yes' || questionFiveGuess === 'y') {
-    alert('You got it right!');
+    alert('You got it right!'); score++;
   } else if (questionFiveGuess === 'no' || questionFiveGuess === 'n') {
     alert('Sorry, you got it wrong');
     alert(`Thanks for playing ${userName}!`);
   }
 }
 
-// question 6
+questionFive();
 
-let myNUM = '33';
+function questionSix() {
+  let myNum = '33';
 
-for (let i = 0; i < 4; i++) {
+  for (let i = 1; i <= 4; i++) {
+    let questionSixGuess = prompt('What number am I thinking about?');
+    if (questionSixGuess === myNum) {
+      alert('Correct! Good job!');
+      score++;
+      break;
+    } else if (questionSixGuess < myNum) {
+      alert('Sorry too high!');
+    } else if (questionSixGuess > myNum) {
+      alert('Sorry too low!');
+    }
+  }
+}
 
-  function questionSix() {
-    let questionSixGuess = prompt('Guess a number from 1-100!');
+questionSix();
 
-    while (questionSixGuess !== myNUM && i > 0) {
-      if (questionSixGuess > myNUM) {
-        questionSixGuess = prompt(`Sorry too low ${questionSixGuess}! Guess again!`);
-        i--;
-      } else if (questionSixGuess < myNUM) {
-        questionSixGuess = prompt(`Sorry too high ${questionSixGuess}! Guess again!`);
-        i--;
-      } else {
-        alert(`Great job ${userName}, ${myNUM} is the answer!`);
-        score++;
+
+
+// question 7
+function questionSeven() {
+
+  let favHouses = ['amouage', 'creed', 'byredo', 'diptyque', 'hermes', 'tom ford', 'guerlain'];
+
+  let guesses = 6;
+
+  for (let i = 0; i < 6; i++) {
+    let questionSeveneGuess = prompt('What is one of my favorite perfume houses?').toLowerCase();
+
+    for (let j = 0; j < favHouses.length; j++) {
+      if (questionSeveneGuess === favHouses[j]) {
+        alert('Yes! I love their frangrances!!');
+        i = 6;
         break;
       }
-      if (i === 0) {
-        alert(`The correct answer is ${myNUM}`);
-      }
     }
   }
+}
 
-  // question 7
-  function questionSeven() {
+questionSeven();
 
-    let favHouses = ['amouage', 'creed', 'byredo', 'diptyque', 'hermes', 'tom ford', 'guerlain'];
-
-    for (let i = 0; i < 6; i++) {
-      let questionSeveneGuess = prompt('What is one of my favorite perfume houses?').toLowerCase();
-
-      for (let j = 0; j < favHouses.length; j++) {
-        if (questionSeveneGuess === favHouses[j]) {
-          alert('Yes! I love their frangrances!!');
-          i = 6;
-          break;
-        }
-      }
-    }
-  }
+alert(`Great Job, ${userName}, Your score is ${score}.`);
