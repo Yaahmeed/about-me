@@ -1,6 +1,8 @@
 'use strict';
 
 console.log('Hey world!');
+let score = 0;
+
 
 
 let userName = prompt('what is your name?');
@@ -53,7 +55,7 @@ function questionFour() {
 
   if (questionFourGuess === 'yes' || questionFourGuess === 'y') {
     alert('Correct! I love chocolate!');
-  } else if (questionFourGuess === 'no' || questionFourGuess === 'no') {
+  } else if (questionFourGuess === 'no' || questionFourGuess === 'n') {
     alert('Sorry, you got it wrong');
   }
 }
@@ -74,18 +76,19 @@ function questionFive() {
 
 questionFive();
 
+// questiton 6
 function questionSix() {
   let myNum = '33';
 
-  for (let i = 1; i <= 4; i++) {
+  for (let i = 0; i < 4; i++) {
     let questionSixGuess = prompt('What number am I thinking about?');
     if (questionSixGuess === myNum) {
       alert('Correct! Good job!');
       score++;
       break;
-    } else if (questionSixGuess < myNum) {
-      alert('Sorry too high!');
     } else if (questionSixGuess > myNum) {
+      alert('Sorry too high!');
+    } else if (questionSixGuess < myNum) {
       alert('Sorry too low!');
     }
   }
@@ -93,28 +96,29 @@ function questionSix() {
 
 questionSix();
 
-
-
 // question 7
 function questionSeven() {
-
   let favHouses = ['amouage', 'creed', 'byredo', 'diptyque', 'hermes', 'tom ford', 'guerlain'];
-
   let guesses = 6;
+  let guessCorrect = false;
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < guesses; i++) {
     let questionSeveneGuess = prompt('What is one of my favorite perfume houses?').toLowerCase();
-
     for (let j = 0; j < favHouses.length; j++) {
       if (questionSeveneGuess === favHouses[j]) {
-        alert('Yes! I love their frangrances!!');
+        alert('Correct! I love their frangrances!!');
+        guessCorrect = true;
         i = 6;
         break;
       }
     }
+    if (guessCorrect === false) {
+      alert('Incorrect, please try again. You have ' + ( guesses - i - 1) + 'guess left');
+    }
   }
+
 }
 
 questionSeven();
 
-alert(`Great Job, ${userName}, Your score is ${score}.`);
+alert(`Great Job, ${userName}! Your score is ${score}.`);
